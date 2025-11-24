@@ -1,3 +1,4 @@
 mountpoints:
   /:
-    url: "https://main--EDS-Handson--KumarMInfo.aem.live"
+    url: "https://content.da.live/EDS-Handson--KumarMInfo/"
+    type: markup
