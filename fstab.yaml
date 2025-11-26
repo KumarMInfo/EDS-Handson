@@ -1,4 +1,4 @@
 mountpoints:
   /:
-    url: "https://content.da.live/EDS-Handson--KumarMInfo/"
+    url: "https://content.da.live/kumarminfo/eds-handson/"
     type: markup
