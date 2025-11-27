@@ -1,0 +1,14 @@
+{
+  "title": "Text Test Block",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "default": "Sample Title"
+    },
+    "body": {
+      "type": "string",
+      "default": "This is a sample text body for the text_test block."
+    }
+  }
+}
