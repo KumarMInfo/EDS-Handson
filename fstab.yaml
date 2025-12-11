@@ -1,4 +1,4 @@
 mountpoints:
-  /:
-    url: "https://content.da.live/kumarminfo/eds-handson/"
-    type: markup
+  /: https://drive.google.com/drive/folders/1uMyVr2AykK86vz5AAnA3VS5RxJBsszjc
+
+

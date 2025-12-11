@@ -1,0 +1,18 @@
+{
+  "project": "EDS-Handson",
+  "plugins": [
+    {
+      "id": "library",
+      "title": "Library",
+      "environments": ["edit"],
+      "url": "/tools/sidekick/library.html",
+      "includePaths": ["**/*.docx", "**/*.gdoc", "**/*.md"]
+    },
+    {
+      "id": "preview",
+      "title": "Preview",
+      "environments": ["edit", "preview"],
+      "url": "/tools/sidekick/preview.html"
+    }
+  ]
+}
