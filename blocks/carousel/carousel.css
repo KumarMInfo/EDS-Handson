@@ -70,7 +70,7 @@
 /* Arrow styling */
 .carousel > div:first-child p,
 .carousel > div:last-child h2 {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgb(0 0 0 / 60%);
   color: #fff;
   width: 42px;
   height: 42px;
@@ -84,11 +84,11 @@
 /* Hover effect */
 .carousel > div:first-child p:hover,
 .carousel > div:last-child h2:hover {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgb(0 0 0 / 85%);
 }
 
 /* Responsive text */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .carousel p,
   .carousel em {
     font-size: 0.9rem;
