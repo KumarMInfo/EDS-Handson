@@ -1,60 +1,77 @@
 export default function decorate(block) {
-  // Collect slides (each top-level row = one slide)
   const slides = [...block.children];
 
   block.classList.add('carousel');
 
-  // Create track
-  const track = document.createElement('div');
-  track.className = 'carousel-track';
+  const visual = document.createElement('div');
+  visual.className = 'carousel-visual';
 
-  slides.forEach((slide, index) => {
-    slide.classList.add('carousel-slide');
+  const content = document.createElement('div');
+  content.className = 'carousel-content';
 
-    // Detect image-only columns
-    [...slide.children].forEach((col) => {
-      const picture = col.querySelector('picture');
-      if (picture && col.children.length === 1) {
-        col.classList.add('carousel-img-col');
-      }
-    });
+  const images = [];
+  const texts = [];
 
-    if (index === 0) slide.classList.add('active');
+  slides.forEach((slide) => {
+    const img = slide.querySelector('img');
+    if (!img) return;
 
-    track.appendChild(slide);
+    // clone content safely (EDS-friendly)
+    const text = slide.cloneNode(true);
+
+    images.push(img);
+    texts.push(text);
+
+    visual.appendChild(img);
+    content.appendChild(text);
   });
 
-  // Replace block content with track
+  // replace original content
   block.textContent = '';
-  block.append(track);
+  block.append(visual, content);
 
-  /* Navigation buttons */
+  // navigation
   const prev = document.createElement('button');
   prev.className = 'carousel-nav prev';
   prev.setAttribute('aria-label', 'Previous slide');
-  prev.textContent = '‹';
+  prev.textContent = '←';
 
   const next = document.createElement('button');
   next.className = 'carousel-nav next';
   next.setAttribute('aria-label', 'Next slide');
-  next.textContent = '›';
+  next.textContent = '→';
 
   block.append(prev, next);
 
-  // State
-  let currentIndex = 0;
+  let current = 0;
+  const total = images.length;
 
   function update() {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    images.forEach((img, i) => {
+      // 🔑 reset only carousel-related classes
+      img.classList.remove('active', 'left', 'right');
+
+      const diff = (i - current + total) % total;
+
+      if (diff === 0) img.classList.add('active');
+      else if (diff === 1) img.classList.add('right');
+      else if (diff === total - 1) img.classList.add('left');
+    });
+
+    texts.forEach((t, i) => {
+      t.classList.toggle('active', i === current);
+    });
   }
 
   prev.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    current = (current - 1 + total) % total;
     update();
   });
 
   next.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % slides.length;
+    current = (current + 1) % total;
     update();
   });
+
+  update();
 }
