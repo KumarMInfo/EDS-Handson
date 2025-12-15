@@ -1,0 +1,96 @@
+/* Wrapper */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Main carousel block */
+.carousel {
+  display: flex;
+  gap: 0;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Edge */
+}
+
+/* Each slide */
+.carousel > div {
+  flex: 0 0 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Image container */
+.carousel picture,
+.carousel img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Text below image */
+.carousel p,
+.carousel em {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Navigation arrows */
+.carousel > div:first-child,
+.carousel > div:last-child {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Right arrow (>>) */
+.carousel > div:first-child {
+  right: 16px;
+}
+
+/* Left arrow (<<) */
+.carousel > div:last-child {
+  left: 16px;
+}
+
+/* Arrow styling */
+.carousel > div:first-child p,
+.carousel > div:last-child h2 {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+/* Hover effect */
+.carousel > div:first-child p:hover,
+.carousel > div:last-child h2:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  .carousel p,
+  .carousel em {
+    font-size: 0.9rem;
+  }
+}
