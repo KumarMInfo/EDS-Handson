@@ -1,17 +1,34 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 export default function decorate(block) {
-  /* change to ul, li */
-  const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
-    const li = document.createElement('li');
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+  block.classList.add('card-fan');
+
+  const cards = [...block.children];
+  let current = Math.floor(cards.length / 2);
+
+  function update() {
+    cards.forEach((card, i) => {
+      card.classList.remove('active', 'prev', 'next', 'hidden');
+
+      const diff = i - current;
+
+      if (diff === 0) {
+        card.classList.add('active');
+      } else if (diff === -1) {
+        card.classList.add('prev');
+      } else if (diff === 1) {
+        card.classList.add('next');
+      } else {
+        card.classList.add('hidden');
+      }
     });
-    ul.append(li);
+  }
+
+  // Optional: click to focus
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      current = index;
+      update();
+    });
   });
-  ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
-  block.replaceChildren(ul);
+
+  update();
 }
