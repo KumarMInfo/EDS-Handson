@@ -1,0 +1,118 @@
+/* ======================================
+   HERO VIDEO – LOCAL MP4 (EDS)
+====================================== */
+
+.hero-video-container {
+  background: linear-gradient(135deg, #0c1304, #1b2608);
+  padding: 96px 0;
+  overflow: hidden;
+}
+
+.hero-video-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-video {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  color: #f5f3a7;
+}
+
+/* ---------------------------
+   VIDEO
+--------------------------- */
+
+.hero-video video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 30px 80px rgb(0 0 0 / 50%);
+}
+
+/* Pause button */
+.hero-video .video-control {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background: rgb(0 0 0 / 60%);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  z-index: 3;
+}
+
+/* ---------------------------
+   TITLE
+--------------------------- */
+.hero-video #hero-banner{
+  font-size: clamp(2.8rem, 5vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.hero-video > div:nth-child(2) p {
+  font-size: clamp(.2rem, 2vw, 1rem);
+  font-weight: 200;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+/* ---------------------------
+   DESCRIPTION
+--------------------------- */
+
+.hero-video > div:nth-child(3) p {
+  max-width: 420px;
+  font-size: 0.5rem;
+  line-height: 1;
+  color: #d9d7a6;
+  margin-bottom: 24px;
+}
+
+/* ---------------------------
+   CTA
+--------------------------- */
+
+.hero-video ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-video li {
+  padding: 10px 18px;
+  border-radius: 24px;
+  border: 1px solid #f5f3a7;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-video li:hover {
+  background: #f5f3a7;
+  color: #0c1304;
+}
+
+/* ---------------------------
+   RESPONSIVE
+--------------------------- */
+
+@media (width <= 900px) {
+  .hero-video {
+    grid-template-columns: 1fr;
+  }
+}
