@@ -1,0 +1,148 @@
+/* =========================================
+   HERO VIDEO CAROUSEL – FERRARI STYLE (EDS)
+========================================= */
+
+.hero-video-carousel-container {
+  position: relative;
+  height: 100vh;
+
+  /* width: 1600px; */
+  padding:0;
+  margin:0;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Wrapper */
+.hero-video-carousel-wrapper {
+  height: 100%;
+}
+
+/* Block */
+.hero-video-carousel {
+  /* position: relative; */
+  height: 100%;
+}
+
+/* ===============================
+   SLIDES
+================================ */
+
+.hero-video-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.hero-video-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* ===============================
+   VIDEO
+================================ */
+
+.hero-video-slide video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark overlay */
+.hero-video-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 25%),
+    rgb(0 0 0 / 60%)
+  );
+  z-index: 1;
+}
+
+/* ===============================
+   CONTENT
+================================ */
+
+.hero-video-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+
+  /* width: 120%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 ;
+}
+
+.hero-video-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+.hero-video-title {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 32px;
+}
+
+/* CTA */
+.hero-video-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  padding: 12px 28px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-video-cta:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ===============================
+   DOTS
+================================ */
+
+.hero-video-dots {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 14px;
+  z-index: 3;
+}
+
+.hero-video-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.hero-video-dot.active {
+  opacity: 1;
+  background: #e10600;
+}

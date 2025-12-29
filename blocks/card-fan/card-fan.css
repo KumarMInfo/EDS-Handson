@@ -16,31 +16,47 @@
 .card-fan > div {
   position: absolute;
   width: 320px;
-  aspect-ratio: 16 / 9;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 12px 30px rgb(0 0 0 / 15%);
-  transition:
-    transform 0.6s ease,
-    opacity 0.6s ease;
+  transition: transform 0.6s ease, opacity 0.6s ease;
   opacity: 0;
+
+  /* Spacing inside card */
+  padding: 18px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Image */
 .card-fan picture,
 .card-fan img {
   width: 100%;
-  height: 100%;
+  height: 180px;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: 14px;
   display: block;
+  margin-bottom: 14px;
+}
+
+/* Text spacing */
+.card-fan h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.card-fan p {
+  margin: 0;
+  line-height: 1.5;
+  color: #555;
 }
 
 /* STATES */
 
 /* CENTER */
 .card-fan > div.active {
-  transform: translateZ(240px) scale(1);
+  transform: translateZ(140px) scale(1);
   opacity: 1;
   z-index: 3;
 }
@@ -74,6 +90,12 @@
 
   .card-fan > div {
     width: 260px;
+    padding: 14px;
+  }
+
+  .card-fan picture,
+  .card-fan img {
+    height: 150px;
   }
 
   .card-fan > div.prev {

@@ -1,0 +1,231 @@
+/* ===============================
+   CAROUSEL TYPE 3 – FINAL
+================================ */
+
+.carousel-type3 {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Track */
+.carousel-type3-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+/* Slide */
+.carousel-type3-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 45% 55%;
+  align-items: center;
+  gap: 28px;
+  padding: 32px 48px;
+  box-sizing: border-box;
+
+  /* merged from duplicate selector */
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* Image */
+.carousel-type3-slide picture,
+.carousel-type3-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===============================
+   TEXT STACK
+================================ */
+
+.carousel-type3-slide > div:nth-child(2),
+.carousel-type3-slide > div:nth-child(3),
+.carousel-type3-slide > div:nth-child(4) {
+  grid-column: 2;
+}
+
+/* Title */
+.carousel-type3-slide h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+/* Description */
+.carousel-type3-slide p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  max-width: 460px;
+}
+
+/* ===============================
+   SLIDE TRANSITION EFFECTS
+================================ */
+
+/* Active slide */
+.carousel-type3-slide.is-active {
+  opacity: 1;
+}
+
+/* IMAGE ANIMATION */
+.carousel-type3-slide picture {
+  transform: translateX(40px);
+  opacity: 0;
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s ease;
+}
+
+.carousel-type3-slide.is-active picture {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* TEXT STAGGER */
+.carousel-type3-slide h2,
+.carousel-type3-slide p,
+.carousel-type3-slide div:last-child {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* Title */
+.carousel-type3-slide.is-active h2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+/* Description */
+.carousel-type3-slide.is-active p {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
+}
+
+/* CTA */
+.carousel-type3-slide.is-active div:last-child {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.35s;
+}
+
+/* CTA TEXT */
+.carousel-type3-slide div:last-child p {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.carousel-type3-slide div:last-child p::after {
+  content: "→";
+  transition: transform 0.3s ease;
+}
+
+.carousel-type3-slide div:last-child p:hover::after {
+  transform: translateX(6px);
+}
+
+/* ===============================
+   NAV ARROWS – FINAL FIX
+================================ */
+
+.carousel-type3-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(129 148 148);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Position */
+.carousel-type3-prev { left: 12px; 
+  background-color: rgb(70 90 90);
+}
+
+.carousel-type3-next { right: 12px;
+  background-color: rgb(70 90 90);
+}
+
+.carousel-type3-nav:hover {
+  background-color: rgb(110 105 90);
+}
+
+.carousel-type3-nav:active {
+  background-color: rgb(70 90 90);
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-type3-nav:focus,
+.carousel-type3-nav:focus-visible {
+  outline: none;
+  background-color: rgb(70 90 90);
+}
+
+/* ===============================
+   DOT INDICATORS
+================================ */
+
+.carousel-type3-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+
+.carousel-type3-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #eae4e4;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-type3-dot.active {
+  background: #000;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (width <= 900px) {
+  .carousel-type3-slide {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .carousel-type3-slide > div {
+    grid-column: 1;
+  }
+
+  .carousel-type3-slide h2 {
+    font-size: 1.8rem;
+  }
+}

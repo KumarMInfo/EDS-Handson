@@ -1,0 +1,111 @@
+/* ======================================
+   NAVBAR CAR – EDS (Ferrari style)
+====================================== */
+
+.navbar-car-container {
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 0%),
+    rgb(60 0 0 / 0%)
+  );
+
+  /* backdrop-filter: blur(6px); */
+}
+
+.navbar-car,
+.navbar-car ul,
+.navbar-car li {
+  font-family: var(--body-font, Arial, sans-serif);
+  font-weight: 530;
+}
+
+/* WRAPPER */
+.navbar-car-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* MAIN BAR */
+.navbar-car {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+/* INNER GRID */
+.navbar-car > div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+/* LOGO */
+.navbar-car picture img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+/* NAV LINKS */
+.navbar-car ul {
+  list-style: none;
+  display: flex;
+  justify-content: left;
+  gap: 48px;
+  margin: 0;
+  padding-left: 3rem;
+}
+
+/* NAV ITEMS */
+.navbar-car li {
+  position: relative;
+  font-size: .8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+/* UNDERLINE HOVER EFFECT */
+.navbar-car li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #e10600;
+  transition: width 0.3s ease;
+}
+
+.navbar-car li:hover::after {
+  width: 100%;
+}
+
+/* ======================================
+   MOBILE
+====================================== */
+
+@media (width <= 900px) {
+  .navbar-car ul {
+    gap: 24px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (width <= 700px) {
+  .navbar-car > div {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar-car ul {
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+}

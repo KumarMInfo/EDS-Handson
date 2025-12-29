@@ -1,4 +1,5 @@
 export default function decorate(block) {
+  console.log(block);
   const slides = [...block.children];
 
   block.classList.add('carousel');
